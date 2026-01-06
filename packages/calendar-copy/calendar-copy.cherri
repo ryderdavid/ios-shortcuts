@@ -1,0 +1,28 @@
+/* Calendar-Copy Shortcut
+ * Syncs events from a source calendar to a destination calendar
+ */
+
+#include 'actions/calendar'
+#include 'actions/scripting'
+
+#define glyph calendar
+#define color blue
+
+// Get current date
+const today = currentDate()
+
+// Get date 3 days from now
+const futureDate = adjustDate(today, "Add", qty(3, "days"))
+
+// Display the date range
+const formattedToday = formatDate(today, "Short")
+const formattedFuture = formatDate(futureDate, "Short")
+
+alert("Syncing events from {formattedToday} to {formattedFuture}", "Calendar-Copy")
+
+// TODO: Next steps:
+// 1. Get calendar events in date range
+// 2. Filter events without attendees
+// 3. Check for sync tag in notes
+// 4. Copy events to destination calendar
+show("Calendar sync prototype ready!")
