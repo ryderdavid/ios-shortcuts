@@ -1,0 +1,15 @@
+name: Calendar-Copy
+description: Syncs events across calendars with a 3-day window, deduplication, and no-invitee filter.
+actions:
+  - type: get_events
+    calendar: Source Calendar
+    window: 3 days
+  - type: filter_events
+    exclude_invitees: true
+  - type: iterate_events
+    actions:
+      - type: check_duplicate
+        tag: sync-id
+      - type: copy_event
+        to_calendar: Destination Calendar
+        tag: sync-id
